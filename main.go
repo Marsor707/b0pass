@@ -20,8 +20,8 @@ func main() {
 
 	//处理命令行参数
 	boot.ExecArgs()
-	fmt.Printf("[ServerUrl] http://127.0.0.1:%d\n",boot.ServPort)
-	fmt.Printf("[Work-Path] %s\n",boot.PathRoot)
+	fmt.Printf("[ServerUrl] http://127.0.0.1:%d\n", boot.ServPort)
+	fmt.Printf("[Work-Path] %s\n", boot.PathRoot)
 
 	//是否开启GUI模式
 	//判断是否安装谷歌浏览器
@@ -39,7 +39,7 @@ func main() {
 	}
 }
 
- func execUI() {
+func execUI() {
 	// Wait Server Run
 	time.Sleep(3 * time.Second)
 
@@ -51,6 +51,7 @@ func main() {
 	if runtime.GOOS == "windows" {
 		args = append(args, "-ldflags '-H windowsgui'")
 	}
+	args = append(args, "--remote-allow-origins=*")
 
 	// New Lorca UI
 	ui, err := lorca.New(
